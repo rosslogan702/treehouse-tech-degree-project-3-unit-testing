@@ -61,15 +61,31 @@ public class UserTest {
     }
 
     @Test
-    public void votingOnUsersOwnQuestionsOrAnswersThrowsException () throws Exception {
+    public void upVotingOnUsersOwnQuestionThrowsException () throws Exception {
         thrown.expect(VotingException.class);
+
         userRoss.upVote(questionOnDeepLearning);
     }
 
     @Test
-    public void votingOnUsersOwnAnswersThrowsException() throws Exception {
+    public void downVotingOnUsersOwnQuestionThrowsException () throws Exception {
         thrown.expect(VotingException.class);
+
         userRoss.downVote(questionOnDeepLearning);
+    }
+
+    @Test
+    public void upVotingOnUsersOwnAnswerThrowsException () throws Exception {
+        thrown.expect(VotingException.class);
+
+        userDavid.upVote(answerOnDeepLearning);
+    }
+
+    @Test
+    public void downVotingOnUsersOwnAnswerThrowsException () throws Exception {
+        thrown.expect(VotingException.class);
+
+        userDavid.downVote(answerOnDeepLearning);
     }
 
     @Test
@@ -80,7 +96,7 @@ public class UserTest {
     }
 
     @Test
-    public void userAcceptingAnswerToQuestionForWhichTheyAreNotTheAuthor () throws Exception {
+    public void userAcceptingAnswerToQuestionForWhichTheyAreNotTheAuthorThrowsException () throws Exception {
         thrown.expect(AnswerAcceptanceException.class);
         thrown.expectMessage(exceptionMessage);
 
